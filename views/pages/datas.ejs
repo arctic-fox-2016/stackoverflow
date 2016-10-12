@@ -1,0 +1,29 @@
+  <% if (success.length > 0) { %>
+    <div class="alert alert-success"><%= success %></div>
+  <% } %>
+
+  <div class="row">
+    <div class="col-md-1">
+        <a href="/datas/add" class="btn btn-lg btn-success">Post Question</a>
+    </div>
+  </div>
+
+  <table class="table table-bordered table-hover table-striped" style="margin-top: 20px">
+    <thead>
+      <tr>
+        <th>Questions</th>
+        <th>Responses</th>
+        <th>Votes</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% for (var data of datas) { %>
+        <tr>
+          <td class="col-md-8"><%= data.name %></td>
+          <td class="col-md-2"><%= data.price %></td>
+          <td class="col-md-2"><%= data.vendor %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
