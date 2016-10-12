@@ -8,27 +8,23 @@
                         <% } %>
             </div>
             <% } %>
-                <form action="/datas/<%= data.slug %>" method="POST">
+
+                <form action="/questions/<%= question.slug %>" method="POST">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control" value="<%= data.name %>">
+                        <label>Title</label>
+                        <input type="text" name="title" class="form-control" value="<%= question.title %>">
                     </div>
                     <div class="form-group">
-                        <label>Price</label>
-                        <input type="text" name="price" class="form-control" value="<%= data.price %>">
+                        <label>Content:</label>
+                        <textarea name="content" rows="6" class="form-control"><%= question.content %></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Vendor</label>
-                        <input type="text" name="vendor" class="form-control" value="<%= data.vendor %>">
+                        <label>Email</label>
+                        <input type="text" name="email" class="form-control" value="<%= question.email %>">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success btn-lg">Update</button>
                     </div>
                 </form>
-                <td class="col-md-2">
-                    <a href="/datas/<%= data.slug %>" class="btn btn-sm btn-primary">View</a> &nbsp;
-                    <a href="/datas/<%= data.slug %>/edit" class="btn btn-sm btn-warning">Edit</a> &nbsp;
-                    <a href="/datas/<%= data.slug %>/delete" class="btn btn-sm btn-danger">Delete</a>
-                </td>
     </div>
 </div>

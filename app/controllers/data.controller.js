@@ -3,7 +3,6 @@
   module.exports = {
   showQuestions : showQuestions,
   showQuestion  : showQuestion,
-  seedQuestions : seedQuestions,
   showAdd       : showAdd,
   processAdd    : processAdd,
   showEdit      : showEdit,
@@ -11,21 +10,21 @@
   deleteQuestion: deleteQuestion
   }
 
-    //delete data
+    //delete question
     function deleteQuestion(req,res) {
       Model.Question.remove({ slug: req.params.slug}, (err) => {
         //set flash Question
-        //redirect to datas page
+        //redirect to questions page
         req.flash('success', 'Question is deleted!')
-        res.redirect('/datas')
+        res.redirect('/questions')
       })
     }
 
-    //edit data
+    //edit question
     function showEdit(req,res) {
-      Model.Question.findOne({ slug: req.params.slug }, (err, data) => {
+      Model.Question.findOne({ slug: req.params.slug }, (err, question) => {
         res.render('pages/edit',{
-          data: data,
+          question: question,
           errors: req.flash('errors')
         })
       })
@@ -41,29 +40,27 @@
       const errors = req.validationErrors()
       if(errors){
         req.flash('errors',errors.map(err => err.msg))
-        return res.redirect(`/datas/${req.params.slug}/edit`)
+        return res.redirect(`/questions/${req.params.slug}/edit`)
       }
 
-      //finding a current data
-      Model.Question.findOne({slug: req.params.slug}, (err,data) => {
-        //update the data
-        data.title   = req.body.title
-        data.content  = req.body.content
-        data.email  = req.body.email
+      //finding a current question
+      Model.Question.findOne({slug: req.params.slug}, (err,question) => {
+        //update the question
+        question.title   = req.body.title
+        question.content  = req.body.content
+        question.email  = req.body.email
 
-        data.save((err) => {
+        question.save((err) => {
           if(err)
             throw err;
 
-          //success flash message
-          //redirect back to /data
-          req.flash('success', 'Successfully updated data')
-          res.redirect('/datas')
+          req.flash('success', 'Successfully updated question')
+          res.redirect(`/questions/${question.slug}`)
         })
       })
     }
 
-    //add data
+    //add question
     function showAdd(req,res){
       res.render('pages/add', {
         errors: req.flash('errors')
@@ -80,56 +77,56 @@
       const errors = req.validationErrors()
       if(errors){
           req.flash('errors',errors.map(err => err.msg))
-          return res.redirect('/datas/add')
+          return res.redirect('/questions/add')
       }
 
-      //create a new data
-      var data = new Model.Question({
+      //create a new question
+      var question = new Model.Question({
         title : req.body.title,
         content : req.body.content,
         email : req.body.email
       })
 
-      data.save((err) => {
+      question.save((err) => {
         if(err)
           throw err
 
         //set successful flash message
-        req.flash('success','Successfully created data!')
+        req.flash('success','Successfully created question!')
 
         //redirect to url, not ejs file!
-        res.redirect(`/datas/${data.slug}`)
+        res.redirect(`/questions/${question.slug}`)
       })
     }
 
-    //show all datas
+    //show all questions
     function showQuestions(req,res) {
-      //get all datas
-      Model.Question.find({}, (err, datas) => {
+      //get all questions
+      Model.Question.find({}, (err, questions) => {
          if (err) {
            res.status(404)
            res.send('Questions not found!')
          }
 
-        //return a view with data
+        //return a view with question
         res.render('pages/datas', {
-          datas : datas,
+          questions : questions,
           success : req.flash('success')
         })
       })
     }
   
-    //show single data
+    //show single question
     function showQuestion (req,res) {
-      //get a single data
-      Model.Question.findOne({ slug : req.params.slug}, (err,data)=>{
+      //get a single question
+      Model.Question.findOne({ slug : req.params.slug}, (err,question)=>{
         if(err){
           res.status(404)
           res.send('Question not found!')
         }
 
         res.render('pages/single', {
-          data : data,
+          question : question,
           success : req.flash('success')
         })
       })

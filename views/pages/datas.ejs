@@ -1,10 +1,10 @@
   <% if (success.length > 0) { %>
     <div class="alert alert-success"><%= success %></div>
   <% } %>
-
-  <div class="row">
+  <div class="container"><div class="col-md-10 col-md-offset-1">
+    <div class="row">
     <div class="col-md-1">
-        <a href="/datas/add" class="btn btn-lg btn-success">Post Question</a>
+        <a href="/questions/add" class="btn btn-lg btn-success">Post Question</a>
     </div>
   </div>
 
@@ -16,14 +16,17 @@
         <th>Votes</th>
       </tr>
     </thead>
-
+    
     <tbody>
-      <% for (var data of datas) { %>
+      <% for (var question of questions) { %>
         <tr>
-          <td class="col-md-8"><%= data.name %></td>
-          <td class="col-md-2"><%= data.price %></td>
-          <td class="col-md-2"><%= data.vendor %></td>
+          <td class="col-md-8"><a href="/questions/<%= question.slug %>"><%= question.title %></a></td>
+          <td class="col-md-2">*</td>
+          <td class="col-md-2">*</td>
         </tr>
       <% } %>
     </tbody>
   </table>
+  </div></div>
+  
+  

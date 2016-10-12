@@ -9,21 +9,23 @@
              </div>
          <% } %>
 
-        <form action="/datas/add" method="POST">
+        <form action="/questions/add" method="POST">
 
             <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control">
+                <label>Title</label>
+                <input type="text" name="title" class="form-control">
             </div>
 
             <div class="form-group">
-                <label>Price</label>
-                <input type="text" name="price" class="form-control">
+                <label>Content:</label>
+                <textarea name="content" rows="6" class="form-control"></textarea>
             </div>
 
+            
+
             <div class="form-group">
-                <label>Vendor</label>
-                <input type="text" name="vendor" class="form-control">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control">
             </div>
 
             <div class="form-group">

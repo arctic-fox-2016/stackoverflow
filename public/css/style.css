@@ -1,6 +1,7 @@
 body{
   font-size: 16px;
   line-height: 1.5;
+  font-family: 'Lato', sans-serif;
 }
 
 .navbar{
@@ -102,4 +103,17 @@ footer{
 
 .btn-warning:focus {
   background-color: #f5cf94 !important;
+}
+
+textarea {
+  resize:none;
+  width: 100%;
+}
+
+a {
+  color: #343434;
+}
+
+a:hover {
+  text-decoration: none;
 }

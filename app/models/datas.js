@@ -11,19 +11,25 @@ const questionSchema = new Schema({
     unique: true
   },
   votes: Number
-},{collection: questions})
+},{collection: 'questions'})
 
 const answerSchema = new Schema({
   title: String,
   content: String,
   votes: Number
-},{collection: answers})
+},{collection: 'answers'})
 
 //middleware - make sure slug is created from title
 questionSchema.pre('save', function(next){
   this.slug = slugify(this.title)
+  this.content = contenify(this.content)
   next()
 })
+
+function contenify(text) {
+  return text
+    .replace(/\n/g, '<br>')
+}
 
 // function to slugify a title
 function slugify(text) {

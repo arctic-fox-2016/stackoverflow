@@ -1,10 +1,31 @@
 <% if (success.length > 0) { %>
-  <div class="alert alert-success"><%= success %></div>
-<% } %>
-
- <center>
-  <h1><%= data.name %></h1>
-
-  <p><%= data.vendor %> - Rp. <%= data.price %></p>
-</center>
-
+    <div class="alert alert-success">
+        <%= success %>
+    </div>
+    <% } %>
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h1><%= question.title %></h1>
+                <p>
+                    <%- question.content %>
+                </p>
+                <h6>Posted by: <%= question.email %></h6>
+                <a href="/questions/<%= question.slug %>/edit" class="btn btn-md btn-warning">Edit</a> &nbsp;
+                <a href="/questions/<%= question.slug %>/delete" class="btn btn-md btn-danger">Delete</a>
+                <div class="panel panel-default" style="margin-top: 50px">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Your Answer</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/questions/add" method="POST">
+                            <div class="form-group">
+                                <textarea name="comment" rows="6" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-sm">Post answer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>

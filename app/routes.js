@@ -12,19 +12,19 @@ module.exports = router
 //main routes
 router.get('/', mainController.showHome)
 
-//show all datas
-router.get('/datas', dataController.showQuestions)
+//show all questions
+router.get('/questions', dataController.showQuestions)
 
-//create data
-router.get('/datas/add', dataController.showAdd)
-router.post('/datas/add', dataController.processAdd)
+//create question
+router.get('/questions/add', dataController.showAdd)
+router.post('/questions/add', dataController.processAdd)
 
-//edit data
-router.get('/datas/:slug/edit', dataController.showEdit)
-router.post('/datas/:slug', dataController.processEdit)
+//edit question
+router.get('/questions/:slug/edit', dataController.showEdit)
+router.post('/questions/:slug', dataController.processEdit)
 
-//delete data
-router.get('/datas/:slug/delete', dataController.deleteQuestion)
+//delete question
+router.get('/questions/:slug/delete', dataController.deleteQuestion)
 
-//show single data
-router.get('/datas/:slug', dataController.showQuestion)
+//show single question
+router.get('/questions/:slug', dataController.showQuestion)
