@@ -14,7 +14,10 @@ module.exports = {
   display: display,
   update:update,
   hapus:hapus,
-  detail:detail
+  detail:detail,
+
+  insertPost:insertPost,
+  deletePost:deletePost
 }
 
 function insert(req,res,next){
@@ -28,8 +31,7 @@ function insert(req,res,next){
       userName:''
     })
     items.save()
-    //res.json(items)
-    res.redirect('/');
+    res.json(items)
 }
 
 function update(req,res,next){
@@ -59,8 +61,7 @@ function hapus(req,res,next){
 
       items.remove((err)=> {
         if(err) throw err
-        //res.json(items)
-        res.redirect('/');
+        res.json(items)
       })
   })
 }
@@ -77,4 +78,35 @@ function detail(req,res,next){
     },(err,result) => {
           res.json(result)
     })
+}
+
+
+
+// non API
+function deletePost(req,res,next){
+  Contents.findOne({
+    _id:req.params.id
+  },(err,items) => {
+      if(err)throw err
+
+      items.remove((err)=> {
+        if(err) throw err
+        //res.json(items)
+        res.redirect('/');
+      })
+  })
+}
+function insertPost(req,res,next){
+    var items = new Contents({
+      title:req.body.title,
+      content:req.body.content,
+      upvote:0,
+      downvote:0,
+      answer:0,
+      parentId:'',
+      userName:''
+    })
+    items.save()
+    //res.json(items)
+    res.redirect('/');
 }

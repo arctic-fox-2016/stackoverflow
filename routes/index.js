@@ -6,17 +6,20 @@ const contentsController = require('../controllers/contents')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Content.find(function(err,result){
-    res.render('index',{content:result});
+    res.render('login',{content:result});
   })
 });
 
 /*
 ================== Contents API ==================
 */
-router.post('/content', contentsController.insert)
-router.get('/content', contentsController.display)
-router.put('/content/:id', contentsController.update)
-router.post('/content/delete/:id', contentsController.hapus)
-router.get('/content/:id', contentsController.detail)
+router.post('/API/content', contentsController.insert)
+router.get('/API/content', contentsController.display)
+router.put('/API/content/:id', contentsController.update)
+router.delete('/API/content/:id', contentsController.hapus)
+router.get('/API/content/:id', contentsController.detail)
+
+router.post('/content', contentsController.insertPost)
+router.post('/content/delete/:id', contentsController.deletePost)
 
 module.exports = router;
