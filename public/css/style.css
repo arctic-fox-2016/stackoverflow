@@ -1,25 +1,29 @@
+html {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+}
+
 body{
-  font-size: 16px;
   line-height: 1.5;
   font-family: 'Lato', sans-serif;
+  height: 100%;
 }
 
 .navbar{
   background: #F5F5F5;
-  border: none;
-  height: 10%;
-}
-
-#site-main {
-  padding-bottom: 30px;
-  padding-top: 100px;
+  padding: 10px;
 }
 
 footer{
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
-  font-size: 12px;
   background: #0fbcab;
   color: #fff;
 }

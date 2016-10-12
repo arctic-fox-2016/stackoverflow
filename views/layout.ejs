@@ -13,16 +13,19 @@
 </head>
 
 <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/questions">
-                        <img src="http://i.imgur.com/6BafgCN.png" alt="stackoverfloat logo" width="150px">
-                    </a>
-                </div>
-            </div>
-        </nav>
+<div id="wrap">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-left" href="/questions"><img src="http://i.imgur.com/6BafgCN.png" style="width: 230px" alt="logo"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
     <!-- main -->
     <main id="site-main">
@@ -30,6 +33,8 @@
             <%- body %>
         </div>
     </main>
+</div>
+
     <!-- footer -->
     <footer>
         Copyright &copy; 2016 Tevinstein
