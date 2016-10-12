@@ -24,7 +24,8 @@ Property :
 - type : String
 - upvote : Number
 - downvote : Number
-
+- parentId : String
+- userId : String
 |Endpoint|HTTP|Description
 |--------|----|-----------
 |/api/contents|GET|return all cards in JSON
