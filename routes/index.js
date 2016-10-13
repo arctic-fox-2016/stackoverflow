@@ -36,7 +36,8 @@ router.get('/API/user/:id', usersController.detail)
 ================= DRIVER Content =============================
 */
 router.post('/content', contentsController.insertPost)
-router.post('/content/delete/:id', contentsController.deletePost)
+router.post('/content/delete/:id/:username', contentsController.deletePost)
+router.post('/content/detail/:id/:username', contentsController.detailPost)
 
 
 
@@ -47,6 +48,20 @@ router.post('/login', function(req, res, next) {
       users.findOne({
         username:username,
         password:password
+      },(err,items) => {
+        console.log(items);
+        contents.find({},(err,items2)=> {
+            console.log(items2);
+            res.render('index',{profile:items,content:items2});
+        })
+
+      })
+});
+
+router.post('/loginback/:username', function(req, res, next) {
+  var username  = req.params.username
+      users.findOne({
+        username:username
       },(err,items) => {
         console.log(items);
         contents.find({},(err,items2)=> {

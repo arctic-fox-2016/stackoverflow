@@ -17,7 +17,8 @@ module.exports = {
   detail:detail,
 
   insertPost:insertPost,
-  deletePost:deletePost
+  deletePost:deletePost,
+  detailPost:detailPost
 }
 
 function insert(req,res,next){
@@ -92,9 +93,22 @@ function deletePost(req,res,next){
       items.remove((err)=> {
         if(err) throw err
         //res.json(items)
-        res.redirect('/');
+        Users.findOne({
+          username:req.params.username
+        },(err,items3) => {
+          console.log('username: '+req.params.username);
+          Contents.find({},(err,items2)=> {
+              console.log('ITEMS 2');
+              console.log(items2);
+              console.log('ITEMS 3');
+              console.log(items3);
+              res.render('index',{profile:items3,content:items2});
+          })
+        })
       })
   })
+
+
 }
 function insertPost(req,res,next){
     var items = new Contents({
@@ -107,14 +121,30 @@ function insertPost(req,res,next){
       userName:req.body.username
     })
     items.save()
+    redirectToHome(res,req.body.username)
+}
 
-    Users.findOne({
-      username:req.body.username
-    },(err,items) => {
-      Contents.find({},(err,items2)=> {
-          console.log(items2);
-          res.render('index',{profile:items,content:items2});
-      })
+function detailPost(req,res,next){
+    var id=req.params.id,
+    username = req.params.username
+    Contents.findOne({
+      _id:id
+    },(err,result) => {
+          res.render('detail',{content:result,username:username})
     })
+
+
+}
+
+
+function redirectToHome(res,username){
+  Users.findOne({
+    username:username
+  },(err,items) => {
+    Contents.find({},(err,items2)=> {
+        console.log(items2);
+        res.render('index',{profile:items,content:items2});
+    })
+  })
 
 }
