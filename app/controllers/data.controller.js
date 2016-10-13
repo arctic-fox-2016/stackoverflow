@@ -11,7 +11,37 @@
       processAddAnswer: processAddAnswer,
       voteUp: voteUp,
       voteDown: voteDown,
+      voteAnswerUp: voteAnswerUp,
+      voteAnswerDown: voteAnswerDown
   }
+
+function voteAnswerUp (req,res) {
+  Model.Question.findOne({slug:req.params.slug}, (err,question) => {
+    question.answer[req.params.idx].answer_votes += 1
+
+    question.save((err) => {
+      if(err)
+        throw err;
+
+      req.flash('success', 'Successfully up vote answer')
+      res.redirect(`/questions/${question.slug}`)
+    })
+  })
+}
+
+function voteAnswerDown (req,res) {
+    Model.Question.findOne({slug:req.params.slug}, (err,question) => {
+    question.answer[req.params.idx].answer_votes -= 1
+
+    question.save((err) => {
+      if(err)
+        throw err;
+
+      req.flash('success', 'Successfully down vote answer')
+      res.redirect(`/questions/${question.slug}`)
+    })
+  })
+}
 
   function voteUp(req, res) {
       //finding a current question
@@ -107,6 +137,7 @@
       req.checkBody('title', 'Title is required').notEmpty()
       req.checkBody('content', 'Content is required').notEmpty()
       req.checkBody('email', 'Email address is required').notEmpty()
+            req.checkBody('email', 'Email address is not the right format').isEmail()
 
       //if there's errors, redirect and save errors to flash
       const errors = req.validationErrors()

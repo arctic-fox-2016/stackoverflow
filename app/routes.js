@@ -37,3 +37,5 @@ router.get('/questions/:slug/voteup', dataController.voteUp)
 router.get('/questions/:slug/votedown', dataController.voteDown)
 
 //vote an answer
+router.get('/questions/:slug/:idx/voteanswerup', dataController.voteAnswerUp)
+router.get('/questions/:slug/:idx/voteanswerdown', dataController.voteAnswerDown)
