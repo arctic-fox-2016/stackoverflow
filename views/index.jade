@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  .main-wrapper
+    .container
+      .jumbotron
+        h4.card-header.primary-color.white-text How to use spread parameter in ES6
+        .jumbotron
+          p Bagaimana cara menggunakan
+        a
+        .chip Javascript &nbsp;
+          span.tag.tag-success Nodejs
+        a
+        .chip Javascript &nbsp;
+          span.tag.tag-primary ExpressJs
+        a
+        .chip Javascript &nbsp;
+          span.tag.black Mocha
+        a
+        .chip Javascript &nbsp;
+          span.tag.tag-danger NightmareJs
+        a
+        .chip Javascript &nbsp;
+          span.tag.tag-warning WebdriverIO
+        a
+        .chip Javascript &nbsp;
+          span.tag.tag-info ExpressJs
+        hr
+        p
+          a.btn.btn-primary(data-toggle='collapse', href='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+            | Link with href
+          button.btn.btn-primary(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+            | Button with data-target
+        #collapseExample.collapse
+          .card.card-block
+            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+
+        h4.card-header.black.white-text Jawaban
+        .jumbotron
+          p Jawab1
+          hr
+          p Jawab2
+          hr
+          p Jawab3
+        hr
+        h2.card-header.success-color.white-text Give Answer
+        .jumbotron
+          h1
+            i.fa.fa-keyboard-o.prefix
+          textarea.md-textarea
+          .md-form
+            i.fa.fa-envelope.prefix
+            input#email-text.form-control.validate(type='email')
+            label(for='email-text') email needed
+          a.btn.btn-stc.waves-effect.waves-light Submit Answer
+
+
+block script
