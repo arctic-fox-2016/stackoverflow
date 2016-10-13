@@ -9,6 +9,7 @@
 
 var Contents = require('../models/contents')
 var Users = require('../models/users')
+var Answers = require('../models/answers')
 module.exports = {
   insert: insert,
   display: display,
@@ -18,7 +19,8 @@ module.exports = {
 
   insertPost:insertPost,
   deletePost:deletePost,
-  detailPost:detailPost
+  detailPost:detailPost,
+  thumbsup:thumbsup
 }
 
 function insert(req,res,next){
@@ -130,10 +132,25 @@ function detailPost(req,res,next){
     Contents.findOne({
       _id:id
     },(err,result) => {
-          res.render('detail',{content:result,username:username})
+          Answers.find({
+            contentId:id
+          },(err,items3) =>{
+            res.render('detail',{content:result,username:username,answer:items3})
+          })
+
     })
+}
 
-
+function thumbsup(req,res,next){
+  var contentId=req.params.contentId,
+  username=req.params.username
+    Contents.findOne({
+      _id:contentId
+    },(err,result) => {
+          result.upvote+=1
+          result.save()
+          redirectToHome(res,username)
+    })
 }
 
 

@@ -74,30 +74,49 @@
                       </div>
                       <div class="col-xs-12 col-sm-4 emphasis">
                           <h2 class="biru"><strong><i class="fa fa-thumbs-o-up fa-lg"></i> <%=content.upvote%></strong></h2>
-                          <p><small>Thumbs Up</small></p>
+                          <form method="POST" action="/thumbsup/<%= content.id%>/<%= username%>">
+                              <button type="submit" class="btn btn-success">Thumbs Up!</button>
+                          </form>
                       </div>
                       <div class="col-xs-12 col-sm-4 emphasis">
                         <h2 class="merah"><strong><i class="fa fa-thumbs-o-down fa-lg"></i> <%=content.downvote%></strong></h2>
-                        <p><small>Thumbs Down</small></p>
+                        <form method="POST" action="/thumbsdown/<%= content.id%>/<%= username%>">
+                            <button type="submit" class="btn btn-danger">Thumbs Up!</button>
+                        </form>
                       </div>
                   </div>
           </div>
-          <table class="table">
-              <tr>
-                <td>Oleh</td><td>Jawaban</td><td>Button</td>
-              </tr>
-              <tr>
-                <td>
-                  <%=username%>
-                </td>
-                <td>
-                  <input type="text" class="form-control" placeholder="Jawaban" name="jawaban:<%=content.id%>">
-                </td>
-                <td>
-                  <button type="submit" class="btn btn-primary" name="masuk">JAWAB</button>
-                </td>
-              </tr>
-          </table>
+          <form method="POST" action="/answer/<%=content.id%>/<%=username%>">
+              <table class="table">
+                  <tr>
+                    <td>Oleh</td><td>Jawaban</td><td>Button</td>
+                  </tr>
+                  <%if(answer) {%>
+                      <%for(var i in answer) {%>
+                          <tr>
+                            <td>
+                                <%=answer[i].username %>
+                            </td>
+                            <td>
+                                <%=answer[i].content %>
+                            </td>
+                          </tr>
+                      <%}%>
+                  <%}%>
+                  <tr>
+                    <td>
+                      <%=username%>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="Jawaban" name="content">
+                        <input type="hidden" name="contentId" value="<%=content.id%>">
+                    </td>
+                    <td>
+                      <button type="submit" class="btn btn-primary" name="masuk">JAWAB</button>
+                    </td>
+                  </tr>
+              </table>
+          </form>
   <!-- CONTENT END -->
 
 
@@ -109,5 +128,6 @@
     <script src="/javascripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/javascripts/ie10-viewport-bug-workaround.js"></script>
+
   </body>
 </html>

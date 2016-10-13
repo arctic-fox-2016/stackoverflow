@@ -3,8 +3,10 @@ var router = express.Router();
 var Content = require('../models/contents')
 const contentsController = require('../controllers/contents')
 const usersController = require('../controllers/users')
+const answersController = require('../controllers/answers')
 var users = require('../models/users')
 var contents = require('../models/contents')
+var answers = require('../models/answers')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -39,6 +41,8 @@ router.post('/content', contentsController.insertPost)
 router.post('/content/delete/:id/:username', contentsController.deletePost)
 router.post('/content/detail/:id/:username', contentsController.detailPost)
 
+router.post('/answer/:contentId/:username', answersController.post)
+router.post('/thumbsup/:contentId/:username', contentsController.thumbsup)
 
 
 router.post('/regis/users', usersController.insertUser)
