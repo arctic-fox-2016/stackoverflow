@@ -8,7 +8,7 @@
 // userName:String
 
 var Contents = require('../models/contents')
-
+var Users = require('../models/users')
 module.exports = {
   insert: insert,
   display: display,
@@ -104,9 +104,17 @@ function insertPost(req,res,next){
       downvote:0,
       answer:0,
       parentId:'',
-      userName:''
+      userName:req.body.username
     })
     items.save()
-    //res.json(items)
-    res.redirect('/');
+
+    Users.findOne({
+      username:req.body.username
+    },(err,items) => {
+      Contents.find({},(err,items2)=> {
+          console.log(items2);
+          res.render('index',{profile:items,content:items2});
+      })
+    })
+
 }

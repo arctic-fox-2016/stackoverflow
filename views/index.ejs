@@ -58,15 +58,13 @@
   						<li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">Game</span> sayfasında iletiniz beğenildi</a></li>
   					</ul>
   				</li>
-  				<li class="active"><a href="#">Ari Adiprana <span class="sr-only">(current)</span></a></li>
   				<li class="dropdown">
-  					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
+  					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%=profile.username %><span class="caret"></span></a>
   					<ul class="dropdown-menu" role="menu">
-  						<li><a href="#">Geri bildirim</a></li>
-  						<li><a href="#">Yardım</a></li>
-  						<li class="divider"></li>
+  						<li><a href="#">Log Out</a></li>
+  						<!-- <li class="divider"></li>
   						<li><a href="#">Ayarlar</a></li>
-  						<li><a href="#exit">Çıkış yap</a></li>
+  						<li><a href="#exit">Çıkış yap</a></li> -->
   					</ul>
   				</li>
   			</ul>
@@ -142,6 +140,7 @@
             <label for="Search">KIRIM PERTANYAAN</label>
               <input type="text" class="form-control" placeholder="Judul" name="title">
               <input type="text" class="form-control" placeholder="Isi" name="content">
+              <input type="hidden" name="username" value="<%=profile.username %>">
           </div>
           <button type="submit" class="btn btn-primary" name="masuk">POST</button>
 
