@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+  Username: <%= username %><br>
+  <a href="/request/logout">Logout</a><br>
+  <br>
+  <% for (let i in question) { %>
+    =============================================<br>
+    Pertanyaan<br>
+    <li>Penanya: <%= question[i].user %>
+    <li>Title: <%= question[i].title %> <br>
+    <li>Content: <%= question[i].content %> <br>
+    <br>
+    <li>List of Answers:
+    <% for (let j in question[i].answer_list){ %><br>
+    <li> ==  Penjawab: <%= question[i].answer_list[j].answer.username %><br>
+    <li> ==  Title: <%= question[i].answer_list[j].answer.title %><br>
+    <li> ==  Content: <%= question[i].answer_list[j].answer.content %><br>
+    <% } %><br>
+    <br>
+    Menjawab<br>
+    <form action="/request/answer/<%= question[i]._id %>" method="POST">
+      Title: <input type="text" name="title"><br>
+      Content: <input type="text" name="content"><br>
+      <input type="submit">
+    </form>
+  <% } %>
+  **************************************************<br>
+  Tambah Pertanyaan
+  <form action ="/request/question" method="POST">
+    Title: <input type="text" name="title"><br>
+    Content:<input type="text" name="content"><br>
+    <input type="submit">
+  </form>
+
+  <script src="/javascript/index.js" type="text/javascript"></script>
+</body>
+</html>
