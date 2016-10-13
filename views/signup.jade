@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  .jumbotron
+  .col-md-4
+  .col-md-4
+    .card
+      .card-block
+        // Header
+        .form-header.blue-gradient
+          h3
+            i.fa.fa-user
+            |  Register:
+        // Body
+        .md-form
+          i.fa.fa-user.prefix
+          input#form3.form-control(type='text')
+          label(for='form3') Your name
+        .md-form
+          i.fa.fa-envelope.prefix
+          input#form2.form-control(type='text')
+          label(for='form2') Your email
+        .md-form
+          i.fa.fa-lock.prefix
+          input#form4.form-control(type='password')
+          label(for='form4') Your password
+        .text-xs-center
+          button.btn.btn-indigo Sign up
+          hr
+          fieldset.form-group
+            input#checkbox1(type='checkbox')
+            label(for='checkbox1') Subscribe me to the newsletter
+            hr
+      // Facebook
+      .text-xs-center
+        h4 or login with :
+        button.btn.btn-fb(type='button')
+          i.fa.fa-facebook.left
+          |  Facebook
+        // Twitter
+        button.btn.btn-tw(type='button')
+          i.fa.fa-twitter.left
+          |  Twitter
+        // Google +
+        button.btn.btn-gplus(type='button')
+          i.fa.fa-google-plus.left
+          |  Google +
+        // Github
+        button.btn.btn-git(type='button')
+          i.fa.fa-github.left
+          |  Github
+
+block script
