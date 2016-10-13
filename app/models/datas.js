@@ -10,14 +10,13 @@ const questionSchema = new Schema({
     type: String,
     unique: true
   },
-  votes: Number
+  votes: Number,
+  answer : [{
+    answer_content : String,
+    answer_email : String,
+    answer_votes : Number
+     }]
 },{collection: 'questions'})
-
-const answerSchema = new Schema({
-  title: String,
-  content: String,
-  votes: Number
-},{collection: 'answers'})
 
 //middleware - make sure slug is created from title
 questionSchema.pre('save', function(next){
@@ -28,7 +27,7 @@ questionSchema.pre('save', function(next){
 
 function contenify(text) {
   return text
-    .replace(/\n/g, '<br>')
+    .replace(/\n/g, '<br>') // Replace \n with <br>
 }
 
 // function to slugify a title
@@ -43,7 +42,6 @@ function slugify(text) {
 
 //create the model
 const Question = mongoose.model('Question', questionSchema)
-const Answer = mongoose.model('Answer', answerSchema)
 
 //export model
-module.exports = {Question,Answer}
+module.exports = {Question}

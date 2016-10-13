@@ -17,7 +17,8 @@ body{
 
 .navbar{
   background: #F5F5F5;
-  padding: 10px;
+  padding: 10px 0
+  ;
 }
 
 footer{
@@ -120,4 +121,17 @@ a {
 
 a:hover {
   text-decoration: none;
+}
+
+.well {
+  margin: 30px 0;
+  background-color: #fff;
+}
+
+.list-group .list-group-item {
+  padding: 40px 0;
+}
+
+.question-content {
+  padding: 30px 0 0 0;
 }

@@ -21,10 +21,19 @@ router.post('/questions/add', dataController.processAdd)
 
 //edit question
 router.get('/questions/:slug/edit', dataController.showEdit)
-router.post('/questions/:slug', dataController.processEdit)
+router.post('/questions/:slug/edit', dataController.processEdit)
 
 //delete question
 router.get('/questions/:slug/delete', dataController.deleteQuestion)
 
 //show single question
 router.get('/questions/:slug', dataController.showQuestion)
+
+//add answer
+router.post('/questions/:slug/answer', dataController.processAddAnswer)
+
+//vote an answer
+router.get('/questions/:slug/voteup', dataController.voteUp)
+router.get('/questions/:slug/votedown', dataController.voteDown)
+
+//vote an answer
