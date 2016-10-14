@@ -1,0 +1,32 @@
+{
+  "name": "stackoverflow",
+  "version": "1.0.0",
+  "description": "API ...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arctic-fox-2016/stackoverflow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arctic-fox-2016/stackoverflow/issues"
+  },
+  "homepage": "https://github.com/arctic-fox-2016/stackoverflow#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "cors": "^2.8.1",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "mongoose": "^4.6.3"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.2"
+  }
+}
