@@ -1,8 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var author = require('../controller/author')
-var blogpost = require('../controller/blogposts')
-var comment = require('../controller/comments')
 var question = require('../controller/question')
 var user = require('../controller/user')
 

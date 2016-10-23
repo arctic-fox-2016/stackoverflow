@@ -42,7 +42,7 @@ function update_answer(req,res) {
 }
 function delete_answer(req,res) {
   question.question.findById(
-            req.params.question_id,
+            req.params.answer_num,
             function (err,result) {
               if(err) {
                 console.log(err)
@@ -146,6 +146,7 @@ module.exports = {
   update_answer : update_answer,
   update_question: update_question,
   delete_question: delete_question,
+  delete_answer: delete_answer,
   find_question : find_question,
   find_all_question: find_all_question,
   questin_upvotes: questin_upvotes,
